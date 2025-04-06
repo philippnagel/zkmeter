@@ -57,7 +57,9 @@ task('deploy', 'Deploys a verifier contract')
       verifier = await hre.viem.deployContract('UltraVerifier');
     }
 
-    const networkConfig = (await import(`viem/chains`))[hre.network.name] as Chain;
+    const { mainnet, sepolia, holesky } = await import('viem/chains');
+    const chainsMap = { mainnet, sepolia, holesky };
+    const networkConfig = chainsMap[hre.network.name as keyof typeof chainsMap];
     const config = {
       name: hre.network.name,
       address: verifier.address,
