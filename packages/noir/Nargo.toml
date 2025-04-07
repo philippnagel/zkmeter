@@ -1,5 +1,5 @@
 [package]
-name = "noirstarter"
+name = "zkmeter"
 type = "bin"
 
 [dependencies]

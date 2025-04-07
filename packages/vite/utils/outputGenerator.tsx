@@ -41,6 +41,6 @@ MOA+128:${invoice_amount * 1.19}'
 UNT+25+1'
 UNZ+1+ZKP${Date.now()}'`;
 
-  toast.success('Outputs generated successfully!');
+  toast.success('JSON & EDI Outputs generated successfully!');
   return { json: jsonOutput, edi: ediOutput };
 }

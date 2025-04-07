@@ -5,8 +5,7 @@ import { getCircuit } from '../../noir/compile.js';
 import { ProofData } from '@noir-lang/types';
 import { Link } from 'react-router-dom';
 import { UltraPlonkBackend } from '@aztec/bb.js';
-import { ToastContainer, toast } from 'react-toastify';
-
+import { toast } from 'react-toastify';
 interface ProofPackage {
   proof: Uint8Array;
   publicInputs: string[];
@@ -630,7 +629,6 @@ const HomePage = () => {
     </div>
   </div>
 )}
-        <ToastContainer />
       </div>
     );
   }
