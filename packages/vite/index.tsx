@@ -1,9 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Component from './components/index.jsx';
+import App from './App.jsx';
 import DebugToggle from './components/DebugToggle.jsx';
 import { checkWasmFeatures } from './utils/checkWasmFeatures.js'; // Import the detection utility
 import { logger } from './utils/logger.js'; // Import the logger
+import './index.css'
 
 // Detect WebAssembly features before rendering the app
 async function detectWasmFeatures() {
@@ -30,8 +31,8 @@ const root = createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
     <div>
-      <DebugToggle /> {/* Add the DebugToggle to the app */}
-      <Component />
+      <App />
+      {/*<DebugToggle />*/}
     </div>
   </React.StrictMode>
 );

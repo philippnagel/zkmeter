@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
@@ -15,6 +16,7 @@ export default defineConfig({
         });
       },
     },
+    tailwindcss(),
   ],
   define: {
     'process.env.LOG_LEVEL': JSON.stringify(process.env.LOG_LEVEL || 'info'),
