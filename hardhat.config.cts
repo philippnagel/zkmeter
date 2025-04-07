@@ -4,7 +4,6 @@ import '@nomicfoundation/hardhat-chai-matchers';
 import 'hardhat-noirenberg';
 
 import { writeFileSync } from 'fs';
-import { Chain } from 'viem';
 import { task, vars } from 'hardhat/config';
 import { HardhatUserConfig } from 'hardhat/types/config';
 import fs from 'fs';
@@ -57,22 +56,29 @@ task('deploy', 'Deploys a verifier contract')
       verifier = await hre.viem.deployContract('UltraVerifier');
     }
 
+    // Import only the chains you need
     const { mainnet, sepolia, holesky } = await import('viem/chains');
     const chainsMap = { mainnet, sepolia, holesky };
-    const networkConfig = chainsMap[hre.network.name as keyof typeof chainsMap];
+    
+    // Get network config or use the hardhat network config as fallback
+    const networkConfig = chainsMap[hre.network.name as keyof typeof chainsMap] || {
+      id: hre.network.config.chainId,
+      name: hre.network.name
+    };
+    
     const config = {
       name: hre.network.name,
       address: verifier.address,
       networkConfig: {
         ...networkConfig,
-        id: hre.network.config.chainId,
+        id: hre.network.config.chainId, // Always use the chainId from hardhat config
       },
     };
 
     console.log(
-      `Attached to address ${verifier.address} at network ${hre.network.name} with chainId ${networkConfig.id}...`,
+      `Attached to address ${verifier.address} at network ${hre.network.name} with chainId ${hre.network.config.chainId}...`,
     );
     writeFileSync('deployment.json', JSON.stringify(config), { flag: 'w' });
   });
 
-export default config;
+  export default config;
