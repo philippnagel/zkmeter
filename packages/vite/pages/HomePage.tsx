@@ -304,8 +304,7 @@ const HomePage = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <form className="bg-white shadow-md rounded-lg p-6 mb-8" onSubmit={submit}>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Energy Metering Application</h1>
-        <h2 className="text-lg text-gray-600 mb-6">Generate an invoice based on your energy consumption</h2>
+        <h1 className="text-lg text-gray-600 mb-6">Get invoiced by your electricity supplier, without revealing metering data.</h1>
         
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
           <p className="text-yellow-700">
